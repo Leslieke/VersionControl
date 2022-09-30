@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +19,9 @@ namespace UserMaintenance
         public Form1()
         {
             InitializeComponent();
-            lblLastName.Text = Resource1.LastName; 
-            lblFirstName.Text = Resource1.FirstName; 
-            btnAdd.Text = Resource1.Add; 
+            lblLastName.Text = Resource1.FullName;  
+            btnAdd.Text = Resource1.Add;
+            btnFajlba.Text = Resource1.Fajlba;
 
             listUsers.DataSource = users;
             listUsers.ValueMember = "ID";
@@ -31,10 +32,21 @@ namespace UserMaintenance
         {
             var u = new User()
             {
-                LastName = txtLastName.Text,
-                FirstName = txtFirstName.Text
+                FullName = txtLastName.Text
+                
             };
             users.Add(u);
+        }
+
+        private void btnFajlba_Click(object sender, EventArgs e)
+        {
+            using (StreamWriter sw = new StreamWriter("Adatok.txt"))
+            {
+                foreach (var item in listUsers.Items)
+                {
+                    sw.WriteLine(item.ToString());
+                }
+            } 
         }
     }
 }
