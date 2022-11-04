@@ -7,11 +7,11 @@ using Week06_JLY8UL.Abstractions;
 
 namespace Week06_JLY8UL.Entities
 {
-    public class BallFactory : IToyFactory
+    public class CarFactory : IToyFactory
     {
         public Toy CreateNew()
         {
-            return new Ball();
+            return new Car();
         }
     }
 }
