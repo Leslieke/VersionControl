@@ -8,14 +8,12 @@ using Week06_JLY8UL.Abstractions;
 
 namespace Week06_JLY8UL.Entities
 {
-    public class BallFactory : IToyFactory
+    public class PresentFactory : IToyFactory
     {
-        public Color BallColor { get; set; }
+        public Color PresentColor { get; set; }
         public Toy CreateNew()
         {
-            return new Ball(BallColor);
+            return new Present(PresentColor);
         }
-        
-
     }
 }

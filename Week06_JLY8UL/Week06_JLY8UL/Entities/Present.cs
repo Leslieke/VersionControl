@@ -9,32 +9,32 @@ using Week06_JLY8UL.Abstractions;
 
 namespace Week06_JLY8UL.Entities
 {
-    public class Ball : Toy
+    public class Present : Toy
     {
-        public Ball()
+        public Present()
         {
-            AutoSize = false;
+            
             Width = 50;
             Height = Width;
-            Paint += Ball_Paint;
+            Paint += Present_Paint;
         }
 
-        private void Ball_Paint(object sender, PaintEventArgs e)
+        private void Present_Paint(object sender, PaintEventArgs e)
         {
             DrawImage(e.Graphics);
         }
-        public SolidBrush BallColor { get; private set; }
-        public Ball(Color color)
+        public SolidBrush PresentColor { get; private set; }
+        public Present(Color color)
         {
-            BallColor = new SolidBrush(color);
+            PresentColor = new SolidBrush(color);
         }
 
         protected override void DrawImage(Graphics g)
         {
-            g.FillEllipse(BallColor, 0, 0, Width, Height);
+            g.FillRectangle(PresentColor, 0, 0, Width, Height);
+            
         }
-
-        public void MoveBall()
+        public void MovePresent()
         {
             Left += 1;
         }
