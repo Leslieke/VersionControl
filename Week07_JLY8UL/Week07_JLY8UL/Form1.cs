@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace Week07_JLY8UL
         List<PortfolioItem> Portfolio = new List<PortfolioItem>();
 
         List<decimal> Nyereségek = new List<decimal>();
+        
         public Form1()
         {
             InitializeComponent();
@@ -67,6 +69,31 @@ namespace Week07_JLY8UL
                 value += (decimal)last.Price * item.Volume;
             }
             return value;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            string filter = "CSV file (*.csv)|*.csv| All Files (*.*)|*.*";
+            saveFileDialog.Filter = filter;
+            const string header = "Időszak;Nyereség";
+            StreamWriter writer = null;
+
+            if (saveFileDialog.ShowDialog()==DialogResult.OK)
+            {
+                filter = saveFileDialog.FileName;
+                writer = new StreamWriter(filter,false,Encoding.Default);
+
+                writer.WriteLine(header);
+                for (int i = 0; i < Nyereségek.Count; i++)
+                {
+                    writer.WriteLine(i+";"+Nyereségek[i]);
+                }
+                
+
+                writer.Close();
+            }
+
         }
     }
 }
