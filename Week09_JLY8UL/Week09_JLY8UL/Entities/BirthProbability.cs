@@ -9,7 +9,7 @@ namespace Week09_JLY8UL.Entities
     public class BirthProbability
     {
         public int Age { get; set; }
-        public int Children { get; set; }
+        public int NbrOfChildren { get; set; }
         public double BirthP { get; set; }
     }
 }
