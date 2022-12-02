@@ -24,9 +24,7 @@ namespace Week09_JLY8UL
         {
             InitializeComponent();
 
-            richTextBox1.Clear();
-            férfiszám.Clear();
-            nőiszám.Clear();
+            
         }
 
         private void SimStep(int year, Person person)
@@ -129,6 +127,10 @@ namespace Week09_JLY8UL
 
         private void btn_Start_Click(object sender, EventArgs e)
         {
+            richTextBox1.Clear();
+            férfiszám.Clear();
+            nőiszám.Clear();
+
             Simulation();
             DisplayResult();
         }
